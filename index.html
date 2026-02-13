@@ -1,11 +1,121 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Valentine Surprise ❤️</title>
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            color: white;
+            padding: 50px;
+        }
+        h1 { font-size: 50px; }
+        p { font-size: 22px; }
+        img { width: 250px; border-radius: 15px; margin: 10px; }
+        button {
+            background-color: white; color: #ff4b5c; border: none;
+            padding: 15px 30px; font-size: 18px; border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #ff4b5c; color: white; }
+
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0;
+                 width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);
+                 align-items: center; justify-content: center; }
+        .modal.show { display: flex !important; }
+        .modal-content {
+            background-color: #ffc0cb; padding: 40px; border-radius: 15px;
+            text-align: center; max-width: 400px;
+        }
+        .modal-content h2 { font-size: 36px; margin-bottom: 30px; color: #ff1493; }
+        .button-container { display: flex; gap: 20px; justify-content: center; }
+
+        .yes-btn {
+            background-color: #ff1493; color: white; padding: 15px 40px;
+            font-size: 18px; border: none; border-radius: 10px; cursor: pointer;
+        }
+        .yes-btn:hover { background-color: #ff69b4; }
+
+        .no-btn {
+            background-color: #ff6b9d; color: white; padding: 15px 40px;
+            font-size: 18px; border: none; border-radius: 10px;
+            cursor: pointer; position: relative; transition: all 0.1s ease;
+        }
+
+        .error-msg {
+            display: none; position: fixed; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); background-color: #ff6b9d;
+            color: white; padding: 30px; border-radius: 15px; font-size: 28px;
+            z-index: 2000; animation: bounce 0.5s; text-align: center;
+        }
+        @keyframes bounce {
+            0%,100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+    </style>
 </head>
-<body style="text-align:center; margin-top:100px; font-family:Arial;">
-    <h1>Happy Valentine's Day Likiii(Ladduuuu) 💖</h1>
-    <p>This website is only for you 🥰</p>
+<body>
+    <h1>Happy Valentine's Day Likiii(Ladduuu) ❤️</h1>
+    <p>This page is made specially for you.<br>You are my happiness, my peace, and my forever.</p>
+    <img src="photo.jpg" alt="Our Photo">
+    <br><br>
+    <button onclick="openValentine()">Click for Surprise 💌</button>
+
+    <div id="valentineModal" class="modal">
+        <div class="modal-content">
+            <h2>Will you be my Valentine? 💕</h2>
+            <div class="button-container">
+                <button class="yes-btn" onclick="window.location.href='love-messages.html'">Yes! 😍</button>
+                <button class="no-btn" id="noBtn">No 😢</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorMsg" class="error-msg"></div>
+
+    <script>
+        const funnyMessages = [
+            "Oops! Button escaped! 😆",
+            "Nice try! Keep trying! 🏃",
+            "You can't catch me! 🚀",
+            "Button.exe has left the chat 👋",
+            "Nope nope nope! 😂",
+            "I'm too fast for you! ⚡",
+            "Did you really think? 😝",
+            "Stop trying, say YES! 💕",
+            "You'll never catch me! 😜"
+        ];
+
+        function openValentine() {
+            document.getElementById("valentineModal").classList.add("show");
+            setupNoButton();
+        }
+
+        function moveNoButton() {
+            const btn = document.getElementById("noBtn");
+            const x = Math.random() * (window.innerWidth - 150);
+            const y = Math.random() * (window.innerHeight - 150);
+            btn.style.left = x + "px";
+            btn.style.top = y + "px";
+            showFunnyMsg();
+        }
+
+        function showFunnyMsg() {
+            const msg = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            const errorDiv = document.getElementById("errorMsg");
+            errorDiv.textContent = msg;
+            errorDiv.style.display = "block";
+            setTimeout(() => { errorDiv.style.display = "none"; }, 2500);
+        }
+
+        function setupNoButton() {
+            const btn = document.getElementById("noBtn");
+            btn.addEventListener("mouseover", moveNoButton);
+            btn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); });
+            btn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); moveNoButton(); });
+            btn.addEventListener("pointerdown", (e) => { e.preventDefault(); moveNoButton(); });
+        }
+    </script>
 </body>
 </html>
-
