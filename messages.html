@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Love Messages ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            color: white;
+            padding: 40px;
+            margin: 0;
+        }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { font-size: 48px; margin-bottom: 30px; }
+        .message-box {
+            background-color: rgba(255,255,255,0.1); padding: 25px; margin: 20px 0;
+            border-radius: 15px; font-size: 26px; backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3); animation: slideIn 0.6s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .kannada-text { font-size: 32px; margin: 15px 0; font-weight: bold; }
+        .english-text { font-size: 18px; opacity: 0.9; margin-top: 10px; }
+        .heart { color: #ff1493; }
+        .back-btn {
+            background-color: white; color: #ff4b5c; border: none;
+            padding: 12px 30px; font-size: 16px; border-radius: 10px;
+            cursor: pointer; margin-top: 30px;
+        }
+        .back-btn:hover { background-color: #ff4b5c; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Love for You <span class="heart">❤️</span></h1>
+        
+        <div class="message-box">
+            <div class="kannada-text">ನೀನು ನನ್ನ ಜೀವನದ ಅರ್ಥ</div>
+            <div class="english-text">You are the meaning of my life</div>
+        </div>
+
+        <div class="message-box">
+            <div class="english-text">I Love You</div>
+        </div>
+        <button class="back-btn" onclick="window.location.href='index.html'">Back to Home 💕</button>
+    </div>
+</body>
+</html>
