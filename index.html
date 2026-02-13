@@ -13,6 +13,7 @@
             color: white;
             padding: 50px;
             margin: 0;
+            overflow-x: hidden;
         }
         h1 { font-size: 50px; }
         p { font-size: 22px; }
@@ -64,6 +65,7 @@
             display: none;
             max-width: 600px;
             margin: 40px auto;
+            position: relative;
         }
         .message-box {
             background-color: rgba(255,255,255,0.1);
@@ -102,9 +104,25 @@
             margin-top: 30px;
         }
         .back-btn:hover { background-color: #ff4b5c; color: white; }
+
+        /* Heart Confetti */
+        .heart {
+            position: fixed;
+            font-size: 24px;
+            animation: floatUp 3s linear forwards;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-500px) scale(1.5); opacity: 0; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Audio -->
+    <audio id="valentineAudio" src="romantic.mp3" preload="auto"></audio>
 
     <!-- Main Page -->
     <div id="mainPage">
@@ -147,7 +165,6 @@
     <script>
         const funnyMessages = [
             "Oops! Button escaped! 😆",
-            "Nice try! Keep trying! 🏃",
             "Did you really think? 😝",
             "Stop trying, say YES! 💕",
         ];
@@ -161,11 +178,22 @@
             document.getElementById("mainPage").style.display = "none";
             document.getElementById("valentineModal").classList.remove("show");
             document.getElementById("loveMessages").style.display = "block";
+
+            // Play romantic audio
+            document.getElementById("valentineAudio").play();
+
+            // Launch heart confetti
+            launchHearts(30);
         }
 
         function showMainPage() {
             document.getElementById("loveMessages").style.display = "none";
             document.getElementById("mainPage").style.display = "block";
+
+            // Stop audio
+            const audio = document.getElementById("valentineAudio");
+            audio.pause();
+            audio.currentTime = 0;
         }
 
         function moveNoButton() {
@@ -191,6 +219,19 @@
             btn.addEventListener("touchstart", (e) => { e.preventDefault(); moveNoButton(); });
             btn.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); moveNoButton(); });
             btn.addEventListener("pointerdown", (e) => { e.preventDefault(); moveNoButton(); });
+        }
+
+        function launchHearts(count) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = Math.random() * window.innerWidth + 'px';
+                heart.style.fontSize = 20 + Math.random() * 20 + 'px';
+                heart.style.color = `hsl(${Math.random()*360}, 100%, 70%)`;
+                heart.innerHTML = '❤️';
+                document.body.appendChild(heart);
+                setTimeout(() => { heart.remove(); }, 3000);
+            }
         }
     </script>
 </body>
