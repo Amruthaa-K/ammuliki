@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Happy Valentine's Day ❤️</title>
+    <!-- Kannada font -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial;
+            font-family: 'Noto Sans Kannada', Arial, sans-serif;
             background: linear-gradient(to right, #ff9a9e, #fad0c4);
             text-align: center;
             color: white;
             padding: 50px;
+            margin: 0;
         }
         h1 { font-size: 50px; }
         p { font-size: 22px; }
@@ -20,13 +24,14 @@
         }
         button:hover { background-color: #ff4b5c; color: white; }
 
+        /* Modal Styles */
         .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0;
                  width: 100%; height: 100%; background-color: rgba(0,0,0,0.7);
                  align-items: center; justify-content: center; }
         .modal.show { display: flex !important; }
         .modal-content {
             background-color: #ffc0cb; padding: 40px; border-radius: 15px;
-            text-align: center; max-width: 400px;
+            text-align: center; max-width: 500px;
         }
         .modal-content h2 { font-size: 36px; margin-bottom: 30px; color: #ff1493; }
         .button-container { display: flex; gap: 20px; justify-content: center; }
@@ -53,20 +58,69 @@
             0%,100% { transform: translate(-50%, -50%) scale(1); }
             50% { transform: translate(-50%, -50%) scale(1.1); }
         }
+
+        /* Love Messages Styles */
+        #loveMessages {
+            display: none;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        .message-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 15px;
+            font-size: 26px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            animation: slideIn 0.6s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .kannada-text {
+            font-family: 'Noto Sans Kannada', Arial, sans-serif;
+            font-size: 32px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .english-text {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        .heart { color: #ff1493; }
+        .back-btn {
+            background-color: white;
+            color: #ff4b5c;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+        .back-btn:hover { background-color: #ff4b5c; color: white; }
     </style>
 </head>
 <body>
-    <h1>Happy Valentine's Day Likiii(Ladduuu) ❤️</h1>
-    <p>This page is made specially for you.<br>You are my happiness, my peace, and my forever.</p>
-    <img src="photo.jpg" alt="Our Photo">
-    <br><br>
-    <button onclick="openValentine()">Click for Surprise 💌</button>
 
+    <!-- Main Page -->
+    <div id="mainPage">
+        <h1>Happy Valentine's Day Likiii(Ladduuu) ❤️</h1>
+        <p>This page is made specially for you.<br>You are my happiness, my peace, and my forever.</p>
+        <img src="photo.jpg" alt="Our Photo">
+        <br><br>
+        <button onclick="openValentine()">Click for Surprise 💌</button>
+    </div>
+
+    <!-- Modal -->
     <div id="valentineModal" class="modal">
         <div class="modal-content">
             <h2>Will you be my Valentine? 💕</h2>
             <div class="button-container">
-                <button class="yes-btn" onclick="window.location.href='love-messages.html'">Yes! 😍</button>
+                <button class="yes-btn" onclick="showLoveMessages()">Yes! 😍</button>
                 <button class="no-btn" id="noBtn">No 😢</button>
             </div>
         </div>
@@ -74,19 +128,49 @@
 
     <div id="errorMsg" class="error-msg"></div>
 
+    <!-- Love Messages Section -->
+    <div id="loveMessages">
+        <h1>My Love for You <span class="heart">❤️</span></h1>
+        
+        <div class="message-box">
+            <div class="kannada-text">ನೀನು ನನ್ನ ಜೀವನದ ಅರ್ಥ</div>
+            <div class="english-text">You are the meaning of my life</div>
+        </div>
+
+        <div class="message-box">
+            <div class="english-text">I Love You 💖</div>
+        </div>
+
+        <button class="back-btn" onclick="showMainPage()">Back to Home 💕</button>
+    </div>
+
     <script>
         const funnyMessages = [
             "Oops! Button escaped! 😆",
             "Nice try! Keep trying! 🏃",
             "You can't catch me! 🚀",
-            "No Button  has left the chat 👋",
+            "Button.exe has left the chat 👋",
+            "Nope nope nope! 😂",
+            "I'm too fast for you! ⚡",
             "Did you really think? 😝",
             "Stop trying, say YES! 💕",
+            "You'll never catch me! 😜"
         ];
 
         function openValentine() {
             document.getElementById("valentineModal").classList.add("show");
             setupNoButton();
+        }
+
+        function showLoveMessages() {
+            document.getElementById("mainPage").style.display = "none";
+            document.getElementById("valentineModal").classList.remove("show");
+            document.getElementById("loveMessages").style.display = "block";
+        }
+
+        function showMainPage() {
+            document.getElementById("loveMessages").style.display = "none";
+            document.getElementById("mainPage").style.display = "block";
         }
 
         function moveNoButton() {
