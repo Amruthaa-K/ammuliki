@@ -192,30 +192,8 @@ love_messages_page = f"""
         </div>
 
         <div class="message-box">
-            <div class="kannada-text">ನಿನ್ನನ್ನು ಪ್ರೀತಿ ಮಾಡುವುದು ನನ್ನ ಮೊದಲ ಪ್ರಾರ್ಥನೆ</div>
-            <div class="english-text">Loving you is my first prayer</div>
+            <div class="english-text">I Love You</div>
         </div>
-
-        <div class="message-box">
-            <div class="kannada-text">ನೀನು ನನ್ನ ಹೃದಯದ ಸ್ಪಂದನೆ</div>
-            <div class="english-text">You are my heartbeat</div>
-        </div>
-
-        <div class="message-box">
-            <div class="kannada-text">ಸದಾ ನನ್ನ ಜೊತೆ ಇರಿ ಪ್ರಿಯೆ</div>
-            <div class="english-text">Stay with me forever, my love</div>
-        </div>
-
-        <div class="message-box">
-            <div class="kannada-text">ನಿನ್ನ ಇಲ್ಲದೆ ನಾನು ಅಪೂರ್ಣ</div>
-            <div class="english-text">Without you, I am incomplete</div>
-        </div>
-
-        <div class="message-box">
-            <div class="kannada-text">ನಿನ್ನ ಪ್ರೀತಿಯಿಂದ ನನ್ನ ಜೀವನ ಸಾರ್ಥಕ</div>
-            <div class="english-text">Your love makes my life meaningful</div>
-        </div>
-
         <button class="back-btn" onclick="window.location.href='/'">Back to Home 💕</button>
     </div>
 </body>
